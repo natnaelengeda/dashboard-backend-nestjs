@@ -26,11 +26,17 @@ export class NinjasService {
     if (!ninja) {
       throw new Error(`Ninja with id ${id} not found`);
     }
-
     return ninja;
   }
 
   createNinja(createNinjaDto: CreateNinjaDto) {
+    const newNinja = {
+      ...createNinjaDto,
+      id: Date.now(),
+    };
 
+    this.Ninjas.push(createNinjaDto);
+
+    return newNinja
   }
 }
